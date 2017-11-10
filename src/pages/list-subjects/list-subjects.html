@@ -1,0 +1,33 @@
+<!--
+  Generated template for the ListSubjectsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Subjects</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="navigateToAddSubjectPage()"> 
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="response.data[0].sub_name; else message">
+    <ion-item *ngFor="let sub of response.data" (click)="showDialog(sub)">
+      <h2>{{ sub.sub_name }}</h2>
+      <p><b>Branch: </b>{{ sub.branch_name }}</p>
+      <p><b>Section: </b>{{ sub.section_name }}</p>
+      <p><b>Year: </b>{{ sub.year }}</p>
+    </ion-item>
+  </ion-list>
+  <ng-template #message>
+    <p>No subjects are found.</p>
+  </ng-template>
+</ion-content>
